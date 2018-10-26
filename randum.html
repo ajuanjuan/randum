@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>randum</title>
+<style type="text/css">
+.screen{
+	width:270px;
+	height:130px; 
+	margin-top:30px;
+	margin-left:40%;
+	background:#fff;
+	padding: auto;
+	padding-top: 70px;
+	line-height:50px; 
+	font-size: 60px;
+	border: 0;
+	text-align:center;}
+.btn{
+	width:100px; 
+	height:50px;
+	margin-top:25px;
+	margin-left:39%; 
+	margin-right:2%;
+	background:#FF9800;
+	font-size: 20px;}
+.btn2{
+	width:100px;
+	height:50px;
+	margin:5px auto; 
+	background:#FF9800;
+	color:#272822 ;
+	font-size: 20px;}
+.title{
+	font-family: '宋体';
+	font-size: 80px;
+	color:#AE81FF;
+	margin-top: 5%;
+	text-align: center;
+}
+
+</style>
+</head>
+
+
+<body background="star.png">
+<div class="box">
+	<div class="title">随机点名</div>
+<div class="screen"></div>
+    <button class="btn">点击开始</button>
+    <button class="btn2">点击停止</button>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+    var aList=['吕布','刘备','貂蝉','海瑞','无崖子','段誉','奥特曼','小怪兽','孙悟空'];
+var Src=document.getElementsByClassName('screen')[0];
+var oBtn=document.getElementsByClassName('btn')[0];
+var oBtn2=document.getElementsByClassName('btn2')[0];
+var timer=null;
+var i=0;
+//抽取之前根据html标签的disabled属性先让停止按钮不能点击，开始按钮能点击
+
+
+oBtn.disabled=false;
+oBtn2.disabled=true;
+
+//抽人名即是依次改变Src的innerHTML，所以这里可以用到setInterval;
+
+oBtn.onclick=function(){
+timer=setInterval(function(){
+Src.innerHTML=aList[i];
+i++;
+if(i==aList.length){
+i=0;
+}
+},50)
+
+
+//点击开始之后改变两个按钮的disabled属性
+
+oBtn.disabled=true;
+oBtn2.disabled=false;
+}
+oBtn2.onclick=function(){
+clearInterval(timer);
+
+
+//点击开始之后改变两个按钮的disabled属性
+
+
+oBtn.disabled=false;
+oBtn2.disabled=true;
+}
+</script>
